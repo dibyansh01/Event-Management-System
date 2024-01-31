@@ -190,8 +190,8 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Response:**
    ```json
   {
- "message": "Event updated successfully",
-  "event": { "updated_event_object" }
+    "message": "Event updated successfully",
+     "event": { "updated_event_object" }
   }
 
 ### Deactivate Event
