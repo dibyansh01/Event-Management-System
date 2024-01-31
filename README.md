@@ -68,14 +68,14 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Request Body:**
   ```json
   {
-    "username": "string",
-    "password": "string"
+     "username": "human",
+    "password": "human123"
   }
 - **Response:**
    ```json
   {
     "message": "User created successfully",
-    "token": "string"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM3MDQsImV4cCI6MTcwNjgyMDEwNH0.NwDlW-7bcvXbgLgEjkzuX6VOYkFV7o5ZfU9pxTiOflo"
   }
 
  ### LogIn
@@ -85,14 +85,14 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Request Headers:**
   ```json
   {
-    "username": "string",
-    "password": "string"
+    "username": "human",
+    "password": "human123"
   }
 - **Response:**
    ```json
   {
     "message": "Logged in successfully",
-    "token": "string"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc"
   }
    
  ### Deactivate User
@@ -124,17 +124,25 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Request Body:**
   ```json
   {
-   "title": "string",
-  "description": "string",
-  "date": "string (ISO 8601 date format)",
-  "time": "string",
-  "location": "string"
+   "title": "Carnival2",
+  "description": "NewEve",
+  "location": "Mumbai"
   }
 - **Response:**
    ```json
   {
-    "message": "Event created successfully",
-    "event": { "event_object" }
+     "message": "Event created successfully",
+    "event": {
+        "title": "Carnival2",
+        "description": "NewEve",
+        "date": "2024-01-31T20:40:13.862Z",
+        "time": "2:02:24 AM",
+        "location": "Mumbai",
+        "organizer": "65b9ff5f074114a0ec6362d6",
+        "isActive": true,
+        "_id": "65bab02d4844a7d6b5dc5682",
+        "__v": 0
+    }
   }
 
 ### Get All Events
@@ -149,8 +157,28 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Response:**
    ```json
   [
-    { "event_object1" },
-    { "event_object2" },
+    {
+        "_id": "65ba520e0b4071a524b1eca9",
+        "title": "carnival",
+        "description": "neweve",
+        "date": "2024-01-31T13:58:38.255Z",
+        "time": "7:27:12 PM",
+        "location": "goa",
+        "organizer": "65b9ff5f074114a0ec6362d6",
+        "isActive": true,
+        "__v": 0
+    },
+    {
+        "_id": "65ba98fa0c16aec279b58ff8",
+        "title": "string",
+        "description": "string",
+        "date": "2024-01-31T00:00:00.000Z",
+        "time": "string",
+        "location": "string",
+        "organizer": "65b9ff5f074114a0ec6362d6",
+        "isActive": true,
+        "__v": 0
+    },
   ...
   ]
 
@@ -166,7 +194,15 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Response:**
    ```json
   {
-    "event_object"
+     "_id": "65ba520e0b4071a524b1eca9",
+    "title": "carnival",
+    "description": "neweve",
+    "date": "2024-01-31T13:58:38.255Z",
+    "time": "7:27:12 PM",
+    "location": "goa",
+    "organizer": "65b9ff5f074114a0ec6362d6",
+    "isActive": true,
+    "__v": 0
   }
 
 ### Update Event
@@ -181,17 +217,25 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Request Body:**
   ```json
   {
-   "title": "string",
-  "description": "string",
-  "date": "string (ISO 8601 date format)",
-  "time": "string",
-  "location": "string"
+   "title": "carnival3",
+  "description": "republicday",
+  "location": "delhi"
   }
 - **Response:**
    ```json
   {
-    "message": "Event updated successfully",
-     "event": { "updated_event_object" }
+     "message": "Event updated successfully",
+    "event": {
+        "_id": "65bab02d4844a7d6b5dc5682",
+        "title": "carnival3",
+        "description": "republicday",
+        "date": "2024-01-31T20:40:13.862Z",
+        "time": "2:02:24 AM",
+        "location": "delhi",
+        "organizer": "65b9ff5f074114a0ec6362d6",
+        "isActive": true,
+        "__v": 0
+    }
   }
 
 ### Deactivate Event
@@ -226,7 +270,254 @@ Welcome to the Event Management System repository! This system allows users to c
   }
 
 
-## Tickets, Comments, Ratings (Similar structure as Events)
+ ## Tickets
+
+ ### Purchase Ticket
+- **URL:** `/tickets`
+- **Method:** `POST`
+- **Description:** Purchase a ticket for an event.
+- **Authorization Header:**
+  ```json
+  {
+    Bearer <token>
+  }
+- **Request Body:**
+  ```json
+  {
+   "eventId": "65ba520e0b4071a524b1eca9",
+    "ticketType": "Premium",
+    "price": "50",
+    "quantity": "2"
+  }
+- **Response:**
+   ```json
+  {
+    "message": "Ticket purchased successfully",
+    "ticket": {
+        "user": "65b9ff5f074114a0ec6362d6",
+        "event": "65ba520e0b4071a524b1eca9",
+        "ticketType": "Premium",
+        "price": 50,
+        "quantity": 2,
+        "_id": "65baafb64844a7d6b5dc5680",
+        "__v": 0
+    }
+  }
+
+ ### Get User's Tickets
+- **URL:** `/tickets`
+- **Method:** `GET`
+- **Description:** Get all tickets purchased by the authenticated user.
+- **Authorization Header:**
+  ```json
+  {
+    Bearer <token>
+  }
+  
+- **Response:**
+   ```json
+  {
+    {
+        "_id": "65ba0ee340a6d9b83563449b",
+        "user": "65b9ff5f074114a0ec6362d6",
+        "event": "65ba0d8c40a6d9b835634498",
+        "ticketType": "open",
+        "price": 50,
+        "quantity": 10,
+        "__v": 0
+    },
+    {
+        "_id": "65baafb64844a7d6b5dc5680",
+        "user": "65b9ff5f074114a0ec6362d6",
+        "event": "65ba520e0b4071a524b1eca9",
+        "ticketType": "Premium",
+        "price": 50,
+        "quantity": 2,
+        "__v": 0
+    }
+  }
+
+ ## Comments
+
+ ### Add Comment
+- **URL:** `/comments`
+- **Method:** `POST`
+- **Description:** Add a comment to an event.
+- **Authorization Header:**
+  ```json
+  {
+    Bearer <token>
+  }
+- **Request Body:**
+  ```json
+  {
+    "eventId": "65bab02d4844a7d6b5dc5682",
+    "text": "Great event"
+  }
+- **Response:**
+   ```json
+  {
+    "message": "Comment added successfully",
+    "comment": {
+        "user": "65b9ff5f074114a0ec6362d6",
+        "event": "65bab02d4844a7d6b5dc5682",
+        "text": "Great event",
+        "_id": "65bab533c4c3a29d2783a318",
+        "timestamp": "2024-01-31T21:01:39.514Z",
+        "__v": 0
+    }
+  }
+
+ ### Update Comment
+- **URL:** `/comments/:commentId`
+- **Method:** `PUT`
+- **Description:** Update a comment.
+- **Authorization Header:**
+  ```json
+  {
+    Bearer <token>
+  }
+  
+- **Request Body:**
+   ```json
+  {
+    "text": "updated Great event"
+  }
+- **Response:**
+   ```json
+  {
+     "message": "Comment updated successfully",
+    "comment": {
+        "_id": "65bab533c4c3a29d2783a318",
+        "user": "65b9ff5f074114a0ec6362d6",
+        "event": "65bab02d4844a7d6b5dc5682",
+        "text": "updated Great event",
+        "timestamp": "2024-01-31T21:01:39.514Z",
+        "__v": 0
+    }
+  }
+
+### Delete Comment
+- **URL:** `/comments/:commentId`
+- **Method:** `DELETE`
+- **Description:** Delete a comment.
+- **Authorization Header:**
+  ```json
+  {
+    Bearer <token>
+  }
+  
+- **Response:**
+   ```json
+  {
+    "message": "Comment deleted successfully"
+  }
+
+### Get Comments for Event
+- **URL:** `/comments/:eventId`
+- **Method:** `GET`
+- **Description:** Get all comments for a specific event.
+- **Authorization Header:**
+  ```json
+  {
+    Bearer <token>
+  }
+  
+- **Response:**
+   ```json
+  {
+     {
+        "_id": "65bab533c4c3a29d2783a318",
+        "user": "65b9ff5f074114a0ec6362d6",
+        "event": "65bab02d4844a7d6b5dc5682",
+        "text": "updated Great event",
+        "timestamp": "2024-01-31T21:01:39.514Z",
+        "__v": 0
+    }
+   ...
+  }
+
+## Ratings
+
+ ### Rate Event
+- **URL:** `/events/:eventId/rate`
+- **Method:** `POST`
+- **Description:** Rate an event.
+- **Authorization Header:**
+  ```json
+  {
+    Bearer <token>
+  }
+- **Request Body:**
+  ```json
+  {
+     "rating": 5
+  }
+- **Response:**
+   ```json
+  {
+     "message": "Event rated successfully",
+    "rating": {
+        "user": "65b9ff5f074114a0ec6362d6",
+        "event": "65bab02d4844a7d6b5dc5682",
+        "rating": 5,
+        "_id": "65bab7d0c4c3a29d2783a31e",
+        "timestamp": "2024-01-31T21:12:48.120Z",
+        "__v": 0
+    }
+  }
+
+### Get Average Rating for Event
+- **URL:** `/events/:eventId/rating`
+- **Method:** `GET`
+- **Description:** Get the average rating for a specific event.
+- **Authorization Header:**
+  ```json
+  {
+    Bearer <token>
+  }
+  
+- **Response:**
+   ```json
+  {
+     "averageRating": 5
+  }
+
+## Search Events
+
+ ### Search Events by Title, Date, or Location
+- **URL:** `/search`
+- **Method:** `GET`
+- **Description:** Search for events based on title, date, or location.
+- **Authorization Header:**
+  ```json
+  {
+    Bearer <token>
+  }
+- **Query Parameters:**
+  * title (optional): Search events by title.
+  * date (optional): Search events by date (ISO 8601 date format).
+  * location (optional): Search events by location.
+
+- **Request Body:**
+  ```json
+  {
+     "rating": 5
+  }
+- **Response:**
+   ```json
+  {
+     "message": "Event rated successfully",
+    "rating": {
+        "user": "65b9ff5f074114a0ec6362d6",
+        "event": "65bab02d4844a7d6b5dc5682",
+        "rating": 5,
+        "_id": "65bab7d0c4c3a29d2783a31e",
+        "timestamp": "2024-01-31T21:12:48.120Z",
+        "__v": 0
+    }
+  }
+
 
 ## Swagger UI
 Swagger UI is available at http://localhost:3000/api-docs for detailed API documentation.
