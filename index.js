@@ -118,7 +118,7 @@ app.post('/events', authenticateJwt, cacheMiddleware(60), async (req, res) => { 
 // Get all events
 app.get('/events',authenticateJwt, async (req, res) => {
 try {
-    const events = await Event.find();
+    const events = await Event.find({ isActive: true });
     res.json(events);
 } catch (error) {
     res.status(500).json({ message: 'Internal Server Error' });
@@ -143,72 +143,87 @@ try {
 
 // Update an event
 app.put('/events/:eventId', authenticateJwt, async (req, res) => {
-    try {
-      const eventId = req.params.eventId;
-      const { title, description, date, time, location } = req.body;
-      
-      // Find the event by ID
-      const event = await Event.findById(eventId);
-  
-      if (!event) {
-        return res.status(404).json({ message: 'Event not found' });
-      }
-  
-      // Update event fields
-      event.title = title || event.title;
-      event.description = description || event.description;
-      event.date = date || event.date;
-      event.time = time || event.time;
-      event.location = location || event.location;
-  
-      // Save the updated event
-      await event.save();
-  
-      res.json({ message: 'Event updated successfully', event });
-    } catch (error) {
-      res.status(400).json({ message: 'Invalid input data', errors: error.errors });
-    }
-});
+  try {
+    const eventId = req.params.eventId;
+    const { title, description, date, time, location } = req.body;
+    
+    // Find the event by ID
+    const event = await Event.findById(eventId);
 
+    if (!event) {
+      return res.status(404).json({ message: 'Event not found' });
+    }
+
+    // Check if the authenticated user is the organizer of the event
+    if (event.organizer.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ message: 'Permission denied. You are not the organizer of this event.' });
+    }
+
+    // Update event fields
+    event.title = title || event.title;
+    event.description = description || event.description;
+    event.date = date || event.date;
+    event.time = time || event.time;
+    event.location = location || event.location;
+
+    // Save the updated event
+    await event.save();
+
+    res.json({ message: 'Event updated successfully', event });
+  } catch (error) {
+    res.status(400).json({ message: 'Invalid input data', errors: error.errors });
+  }
+});
 
 // Endpoint to deactivate an event
 app.put('/events/:eventId/deactivate', authenticateJwt, async (req, res) => {
-    try {
-      const eventId = req.params.eventId;
-      const event = await Event.findById(eventId);
-      if (!event) {
-        return res.status(404).json({ message: 'Event not found' });
-      }
-  
-      event.isActive = false;
-      await event.save();
-  
-      res.json({ message: 'Event deactivated successfully' });
-    } catch (error) {
-      res.status(500).json({ message: 'Internal Server Error' });
+  try {
+    const eventId = req.params.eventId;
+    const event = await Event.findById(eventId);
+    if (!event) {
+      return res.status(404).json({ message: 'Event not found' });
     }
-  });
+
+    // Check if the authenticated user is the organizer of the event
+    if (event.organizer.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ message: 'Permission denied. You are not the organizer of this event.' });
+    }
+
+    event.isActive = false;
+    await event.save();
+
+    res.json({ message: 'Event deactivated successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
 
 // Delete an event
 app.delete('/events/:eventId', authenticateJwt, async (req, res) => {
-    try {
-      const eventId = req.params.eventId;
-  
-      // Find the event by ID
-      const event = await Event.findById(eventId);
-  
-      if (!event) {
-        return res.status(404).json({ message: 'Event not found' });
-      }
-  
-      // Delete the event from the database
-      await Event.deleteOne({ _id: eventId });
-  
-      res.json({ message: 'Event deleted successfully' });
-    } catch (error) {
-      res.status(500).json({ message: 'Internal Server Error' });
+  try {
+    const eventId = req.params.eventId;
+
+    // Find the event by ID
+    const event = await Event.findById(eventId);
+
+    if (!event) {
+      return res.status(404).json({ message: 'Event not found' });
     }
-  });
+
+    // Check if the authenticated user is the organizer of the event
+    if (event.organizer.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ message: 'Permission denied. You are not the organizer of this event.' });
+    }
+
+    // Delete the event from the database
+    await Event.deleteOne({ _id: eventId });
+
+    res.json({ message: 'Event deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
 
 // operations for Tickets
 
@@ -259,48 +274,58 @@ try {
 
 // Update a comment
 app.put('/comments/:commentId', authenticateJwt, async (req, res) => {
-    try {
-      const commentId = req.params.commentId;
-      const { text } = req.body;
-  
-      // Find the comment by ID
-      const comment = await Comment.findById(commentId);
-  
-      if (!comment) {
-        return res.status(404).json({ message: 'Comment not found' });
-      }
-  
-      // Update comment text
-      comment.text = text || comment.text;
-  
-      // Save the updated comment
-      await comment.save();
-  
-      res.json({ message: 'Comment updated successfully', comment });
-    } catch (error) {
-      res.status(400).json({ message: 'Invalid input data', errors: error.errors });
+  try {
+    const commentId = req.params.commentId;
+    const { text } = req.body;
+
+    // Find the comment by ID
+    const comment = await Comment.findById(commentId);
+
+    if (!comment) {
+      return res.status(404).json({ message: 'Comment not found' });
     }
+
+    // Check if the authenticated user is the owner of the comment
+    if (comment.user.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ message: 'Unauthorized: You cannot update this comment' });
+    }
+
+    // Update comment text
+    comment.text = text || comment.text;
+
+    // Save the updated comment
+    await comment.save();
+
+    res.json({ message: 'Comment updated successfully', comment });
+  } catch (error) {
+    res.status(400).json({ message: 'Invalid input data', errors: error.errors });
+  }
 });
 
 // Delete a comment
 app.delete('/comments/:commentId', authenticateJwt, async (req, res) => {
-    try {
-      const commentId = req.params.commentId;
-  
-      // Find the comment by ID
-      const comment = await Comment.findById(commentId);
-  
-      if (!comment) {
-        return res.status(404).json({ message: 'Comment not found' });
-      }
-  
-      // Delete the comment from the database
-      await Comment.deleteOne({ _id: commentId });
-  
-      res.json({ message: 'Comment deleted successfully' });
-    } catch (error) {
-      res.status(500).json({ message: 'Internal Server Error' });
+  try {
+    const commentId = req.params.commentId;
+
+    // Find the comment by ID
+    const comment = await Comment.findById(commentId);
+
+    if (!comment) {
+      return res.status(404).json({ message: 'Comment not found' });
     }
+
+    // Check if the authenticated user is the owner of the comment
+    if (comment.user.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ message: 'Unauthorized: You cannot delete this comment' });
+    }
+
+    // Delete the comment from the database
+    await Comment.deleteOne({ _id: commentId });
+
+    res.json({ message: 'Comment deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
 });
   
   
