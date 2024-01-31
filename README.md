@@ -33,6 +33,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - MongoDB (Mongoose)
 - bcrypt (Password hashing)
 - JSON Web Tokens (JWT) for authentication
+- Zod
 - Swagger UI for API documentation
 - In-memory caching for improved performance
 
@@ -521,4 +522,10 @@ Welcome to the Event Management System repository! This system allows users to c
 
 ## Swagger UI
 Swagger UI is available at http://localhost:3000/api-docs for detailed API documentation.
+
+
+![Screenshot from 2024-02-01 03-04-38](https://github.com/dibyansh01/Event-Management-System/assets/129924389/32099f2b-e079-4de9-9356-6aa74d55ae23)
+![Screenshot from 2024-02-01 03-04-55](https://github.com/dibyansh01/Event-Management-System/assets/129924389/5514e1ff-4d68-4ef9-ad86-dc240387dbbd)
+
+
 
