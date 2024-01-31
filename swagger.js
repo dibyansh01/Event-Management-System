@@ -10,6 +10,111 @@
  *         description: Swagger documentation.
  */
 
+
+/**
+ * @swagger
+ * /signup:
+ *   post:
+ *     summary: Create a new user
+ *     description: Register a new user with a unique username.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: User created successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                 token:
+ *                   type: string
+ *       '400':
+ *         description: Invalid input data.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                 errors:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       code:
+ *                         type: string
+ *                       expected:
+ *                         type: string
+ *                       received:
+ *                         type: string
+ *                       path:
+ *                         type: array
+ *                       message:
+ *                         type: string
+ *       '403':
+ *         description: User already exists.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ */
+
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: User login
+ *     description: Log in a user with a valid username and password.
+ *     parameters:
+ *       - in: headers
+ *         name: username
+ *         description: The username of the user.
+ *         required: true
+ *         schema:
+ *           type: string
+ *       - in: headers
+ *         name: password
+ *         description: The password of the user.
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Logged in successfully.
+ *         schema:
+ *           type: object
+ *           properties:
+ *             message:
+ *               type: string
+ *             token:
+ *               type: string
+ *       '403':
+ *         description: Invalid username or password.
+ *         schema:
+ *           type: object
+ *           properties:
+ *             message:
+ *               type: string
+ */
+
+
+
 // Endpoint to deactivate a user (The user can only deactivate themselves, not any other user.)
 /**
  * @swagger

@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 const { z } = require('zod');
 const jwt = require('jsonwebtoken')
 const swaggerUi = require('swagger-ui-express');
+const cors = require('cors')
 
 const {authenticateJwt, SECRET} = require('./src/middleware/auth.js')
 const {cacheMiddleware} = require('./src/middleware/cache.js')
@@ -19,6 +20,7 @@ dotenv.config();
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 const mongoURI = process.env.database || ''

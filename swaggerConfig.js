@@ -14,8 +14,22 @@ const options = {
         description: 'Development server',
       },
     ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT', 
+        },
+      },
+    },
   },
-  apis: ['./index.js', './swagger.js'], 
+  apis: ['./index.js', './swagger.js'],
+  security: [
+    {
+      bearerAuth: [], 
+    },
+  ],
 };
 
 const specs = swaggerJsdoc(options);
