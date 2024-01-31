@@ -33,6 +33,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - MongoDB (Mongoose)
 - bcrypt (Password hashing)
 - JSON Web Tokens (JWT) for authentication
+- Zod
 - Swagger UI for API documentation
 - In-memory caching for improved performance
 
