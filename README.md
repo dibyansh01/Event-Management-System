@@ -499,23 +499,23 @@ Welcome to the Event Management System repository! This system allows users to c
   * date (optional): Search events by date (ISO 8601 date format).
   * location (optional): Search events by location.
 
-- **Request Body:**
-  ```json
-  {
-     "rating": 5
-  }
 - **Response:**
    ```json
   {
-     "message": "Event rated successfully",
-    "rating": {
-        "user": "65b9ff5f074114a0ec6362d6",
-        "event": "65bab02d4844a7d6b5dc5682",
-        "rating": 5,
-        "_id": "65bab7d0c4c3a29d2783a31e",
-        "timestamp": "2024-01-31T21:12:48.120Z",
-        "__v": 0
-    }
+      "message": "Event search results",
+    "events": [
+        {
+            "_id": "65ba520e0b4071a524b1eca9",
+            "title": "carnival",
+            "description": "neweve",
+            "date": "2024-01-31T13:58:38.255Z",
+            "time": "7:27:12 PM",
+            "location": "goa",
+            "organizer": "65b9ff5f074114a0ec6362d6",
+            "isActive": true,
+            "__v": 0
+        }
+    ]
   }
 
 
