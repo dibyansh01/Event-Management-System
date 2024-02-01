@@ -421,7 +421,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
   
 - **Response:**
