@@ -63,7 +63,7 @@ Welcome to the Event Management System repository! This system allows users to c
 ## Authentication
 
 ### Sign Up
-- **URL:** `/signup`
+- **URL:** `/users/signup`
 - **Method:** `POST`
 - **Description:** Register a new user.
 - **Request Body:**
@@ -80,7 +80,7 @@ Welcome to the Event Management System repository! This system allows users to c
   }
 
  ### LogIn
-- **URL:** `/login`
+- **URL:** `/users/login`
 - **Method:** `POST`
 - **Description:** Log in with existing credentials.
 - **Request Headers:**
