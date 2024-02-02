@@ -13,7 +13,7 @@
 
 /**
  * @swagger
- * /signup:
+ * /users/signup:
  *   post:
  *     summary: Create a new user
  *     description: Register a new user with a unique username.
@@ -77,18 +77,18 @@
 
 /**
  * @swagger
- * /login:
+ * /users/login:
  *   post:
  *     summary: User login
  *     description: Log in a user with a valid username and password.
  *     parameters:
- *       - in: headers
+ *       - in: header
  *         name: username
  *         description: The username of the user.
  *         required: true
  *         schema:
  *           type: string
- *       - in: headers
+ *       - in: header
  *         name: password
  *         description: The password of the user.
  *         required: true
