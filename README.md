@@ -63,7 +63,7 @@ Welcome to the Event Management System repository! This system allows users to c
 ## Authentication
 
 ### Sign Up
-- **URL:** `/signup`
+- **URL:** `/users/signup`
 - **Method:** `POST`
 - **Description:** Register a new user.
 - **Request Body:**
@@ -80,7 +80,7 @@ Welcome to the Event Management System repository! This system allows users to c
   }
 
  ### LogIn
-- **URL:** `/login`
+- **URL:** `/users/login`
 - **Method:** `POST`
 - **Description:** Log in with existing credentials.
 - **Request Headers:**
@@ -103,7 +103,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
 - **Response:**
    ```json
@@ -120,7 +120,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
 - **Request Body:**
   ```json
@@ -153,7 +153,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
 - **Response:**
    ```json
@@ -190,7 +190,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
 - **Response:**
    ```json
@@ -213,7 +213,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
 - **Request Body:**
   ```json
@@ -246,7 +246,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
 - **Response:**
    ```json
@@ -262,7 +262,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
 - **Response:**
    ```json
@@ -280,7 +280,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
 - **Request Body:**
   ```json
@@ -312,7 +312,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
   
 - **Response:**
@@ -347,7 +347,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
 - **Request Body:**
   ```json
@@ -376,7 +376,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
   
 - **Request Body:**
@@ -405,7 +405,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
   
 - **Response:**
@@ -421,7 +421,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
   
 - **Response:**
@@ -447,7 +447,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
 - **Request Body:**
   ```json
@@ -475,7 +475,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
   
 - **Response:**
@@ -493,7 +493,7 @@ Welcome to the Event Management System repository! This system allows users to c
 - **Authorization Header:**
   ```json
   {
-    Bearer <token>
+    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJhYjA4ODQ4NDRhN2Q2YjVkYzU2ODUiLCJ1c2VybmFtZSI6Imh1bWFuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDY3MzM4MDIsImV4cCI6MTcwNjgyMDIwMn0.mh9e6AX6NfEYPTFhJS-xfpNpOE-fd3RmjQ3RUrLbSfc
   }
 - **Query Parameters:**
   * title (optional): Search events by title.
