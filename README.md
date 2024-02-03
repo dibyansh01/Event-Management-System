@@ -524,8 +524,10 @@ Welcome to the Event Management System repository! This system allows users to c
 Swagger UI is available at http://localhost:3000/api-docs for detailed API documentation.
 
 
-![Screenshot from 2024-02-01 03-04-38](https://github.com/dibyansh01/Event-Management-System/assets/129924389/32099f2b-e079-4de9-9356-6aa74d55ae23)
-![Screenshot from 2024-02-01 03-04-55](https://github.com/dibyansh01/Event-Management-System/assets/129924389/5514e1ff-4d68-4ef9-ad86-dc240387dbbd)
+![1](https://github.com/dibyansh01/Event-Management-System/assets/129924389/a2ebcc73-af29-46de-ae97-6e09c2f2e029)
+![2](https://github.com/dibyansh01/Event-Management-System/assets/129924389/c1f88485-69ee-4830-a145-258fb9024228)
+
+
 
 
 
